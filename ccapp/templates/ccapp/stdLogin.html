@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/createAccountStyle.css' %}">
+    <!-- <script src="{% static 'js/stdCreateAccountScript.js' %}"></script> -->
+    
+</head>
+<body onload="init()">
+    <div class="container">
+        <form  action = "" method= "POST" >
+            {% csrf_token%}
+            <input type="text" name="username" placeholder="username" required autofocus><br>
+            <input type="password" name="password" placeholder="password" required><br>
+            <input type="submit"></input>
+    
+    <!-- <div class="container">
+        <form class="form" id="stdLogin">
+            <h1 class="form__title">Student Login</h1>
+            <div class="form_message form_message--error"></div>
+            <div class="form_message form_message--success"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" id ="signInEmail" autofocus placeholder="Email">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" id="signInPassword" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+             <p class="form__text"> -->
+                <!-- <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a class="form__link" action="studentcreate/" id="linkCreateAccount">Don't have an account? Create account</a>
+            </p> --> 
+        </form>
+        <br>
+        <form class="form" id="stdLogin1" action="../studentcreate/">
+            <button class="form__button" type ="submit">Don't have account? Create account</button>
+        </form>
+        <br>
+        <form class="form" id="stdLogin1" action="/">
+            <button class="form__button" type ="submit">Back to Main Menu</button>
+        </form>
+
+        <div>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+          </div>
+        
+    </div>
+</body>

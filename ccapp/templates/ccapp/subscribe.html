@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>find events</title>
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/mainStyle.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/feedStyle10.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- js -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="{% static '/js/mainScript.js' %}"></script>
+    <script src="{% static '/js/feedScript12.js' %}"></script>
+  </head>
+  <body>
+    <!-- nav bar -->
+    <header>
+      <div class="logo"><a href="/">Project Name</a></div>
+      <ul class="nav">
+        <li class="navlink"><a> Hello {{user.first_name}}</a></li>
+        <li class="navlink"><button type="button" onclick="goBack()">Back to Student page</button></li>
+        
+      </ul>
+      <div class="burger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </header>
+
+
+
+
+
+    <!-- browser frame -->
+    <div class="container">
+      <div class="browser">
+        <div class="content">
+           <h2>get notified with emails</h2>
+
+          <form enctype="multipart/form-data" id="email-form" action="../subscribe/" method="post" autocomplete="off">
+            {% csrf_token %}
+            <label class="input-name">name</label>
+            <input type="text" name="name" id="name" maxlength="35" required><br>
+            <label class="input-name" for="email">email</label>
+            <!-- <input type="email" name="email" id="email" maxlength = "35" pattern=".+@gmail.com" title="Must be @gmail.com." required><br> -->
+            <input type="text" name="email" id="name" maxlength = "35" pattern=".+@gmail.com" title="Must be @gmail.com." required><br>
+            <label class="input-name">college</label>
+            <div class="selectdiv">
+              <input type="text" list="colleges" name="colleges" id="colleges-input-form" required>
+              <datalist name="colleges" id="colleges"></datalist>
+            </div><br>
+            <!-- <input type="hidden" id="cID" name="cID"> -->
+            <!-- <div class="subscription">
+              <div class="option">
+                <input type="radio" id="subscribe" name="email-notif" value="subscribe" required>
+                <label for="subscribe">subscribe</label>
+              </div>
+              <div class="option">
+                <input type="radio" id="unsubsribe" name="email-notif" value="unsubscribe">
+                <label for="unsubscribe">unsubscribe</label>
+              </div>
+            </div> -->
+            <!-- <input type="submit" value="Subscribe" class="btn btn-primary btn-sm"> -->
+            <div id="button-holder">
+              <input type="submit" >
+            </div>
+          </form>
+
+<!-- 
+          <div id="form-submitted">
+            <h1>form has been submitted!</h1>
+            <p id="confirmation-text"></p>
+          </div> -->
+
+        </div>
+        <div>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+          </div>
+      </div>
+    </div> 
+
+    <!-- <div style="border: 1px solid darkgreen; border-radius: 2px; padding:10px; text-align: center;">
+        <div><strong>SUBSCRIBE</strong></div>
+        <div style="margin-bottom: 10px;">Please subscribe to get the latest articles in your mailbox.</div>
+        <div>
+            <form action="" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <input type="email" name="email" class="form-control" placeholder="Your Email ID Please" required>
+                <br>
+
+                <input type="submit" value="Subscribe" class="btn btn-primary btn-sm">
+            </form>
+        </div>
+        <div>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+          </div>
+    </div> -->
+
+  </body>
+</html>
