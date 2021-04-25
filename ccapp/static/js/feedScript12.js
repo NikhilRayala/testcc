@@ -191,7 +191,7 @@ async function onLoad() {
   college = params.get('clg')
   console.log(college);
   document.getElementById("college").innerHTML = college;
-  // Get the elements from the DOM after they have loaded.
+  //Get the elements from the DOM after they have loaded.
   
   createPostButton = document.getElementById('create-post-button');
   createPostEventButton = document.getElementById('create-post-event-button');
