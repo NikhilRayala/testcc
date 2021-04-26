@@ -17,5 +17,6 @@ urlpatterns = [
     path('generateeventbookingid/', views.generateEventBookingId, name='booking-id1'),
     path('searchevents/', views.searchevents, name='std-searchevents'),
     path('student/subscribe/', views.subscribeUser, name='std-subscribe'),
+    path('sendusernametosubscribe/', views.sendUserNameToSubscribe, name='send-username-subscribe'),
     path('studentpage/mail/', views.mail, name='std-subscribe')
 ]

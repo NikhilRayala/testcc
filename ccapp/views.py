@@ -436,6 +436,9 @@ def subscribeUser(request):
         return render(request,'ccapp/subscribe.html')
 
 
+def sendUserNameToSubscribe(request):
+    return render(request,'ccapp/subscribe.html',{"user": std_user_name})
+
 def mail(request):
     return render(request,'ccapp/mail.html')
 
