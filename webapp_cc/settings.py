@@ -78,15 +78,33 @@ WSGI_APPLICATION = 'webapp_cc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'webappdb',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost'
+if os.getenv('GAE_APPLICATION', None):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    
+    #  
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': '/cloudsql/ccproject-311902:us-east1:ccprojectdb',
+            'USER': 'ccproject',
+            'PASSWORD': 'rajini',
+            'NAME': 'ccproject2db',
+        }
     }
-}
+
+else:
+    HOST_URL ="127.0.0.1:8000"
+    
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'webappdb',
+            'USER': 'ccproject',
+            'PASSWORD': 'rajini',
+            'HOST': 'localhost'
+        }
+    }
 
 
 # Password validation
